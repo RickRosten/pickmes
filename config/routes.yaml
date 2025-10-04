@@ -3,3 +3,12 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+redirect_all:
+    path: /{url}
+    controller: App\Controller\RedirectToSonataController::urlRedirect
+    defaults:
+        path: /admin
+        permanent: true
+    requirements:
+        url: ".+"
