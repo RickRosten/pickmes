@@ -44,7 +44,6 @@ final class PickmeAdmin extends AbstractAdmin
             ->add('_actions', null, [
                 'actions' => [
                     'edit' => [],
-                    'delete' => [],
                     'show' => [],
                 ],
             ]);
