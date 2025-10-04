@@ -1,3 +1,6 @@
+imports:
+    - { resource: admin.yaml }
+
 # This file is the entry point to configure your own services.
 # Files in the packages/ subdirectory configure your dependencies.
 
@@ -15,6 +18,18 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/'
+
+    App\Admin\UserAdmin:
+        class: App\Admin\UserAdmin
+        arguments: [ ~, App\Entity\User, ~ ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: 'Пользователи', show_in_dashboard: true }
+
+    App\Admin\PickmeAdmin:
+        class: App\Admin\PickmeAdmin
+        arguments: [ ~, App\Entity\Pickme, ~ ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: 'Список пикми', show_in_dashboard: true }
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

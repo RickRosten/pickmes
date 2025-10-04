@@ -121,9 +121,6 @@
             "ref": "30dba2f9b719f21b497a6302f41aac07f9079e13"
         }
     },
-    "sonata-project/user-bundle": {
-        "version": "5.16.0"
-    },
     "symfony/asset-mapper": {
         "version": "7.3",
         "recipe": {
