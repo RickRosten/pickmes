@@ -1,0 +1,10 @@
+{#этот шаблон нужен, ибо соната пытается обращаться к своему собственному logout пути, которого почему-то нет#}
+
+{% extends '@SonataAdmin/Core/user_block.html.twig' %}
+
+{% block user_block %}
+    {% if app.user %}
+        <span>{{ app.user.username }}</span>
+        <a href="{{ path('app_logout') }}">Logout</a>
+    {% endif %}
+{% endblock %}
