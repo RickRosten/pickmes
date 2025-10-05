@@ -12,6 +12,11 @@ use Vich\UploaderBundle\Form\Type\VichImageType;
 
 final class PickmeAdmin extends AbstractAdmin
 {
+    protected function configureBatchActions(array $actions): array
+    {
+        return parent::configureBatchActions([]);
+    }
+
     protected function configureFormFields(FormMapper $form): void
     {
         $form

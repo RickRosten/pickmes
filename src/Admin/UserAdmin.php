@@ -83,5 +83,8 @@ final class UserAdmin extends AbstractAdmin
         ]);
     }
 
-
+    protected function configureBatchActions(array $actions): array
+    {
+        return parent::configureBatchActions([]);
+    }
 }
