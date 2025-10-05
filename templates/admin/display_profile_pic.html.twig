@@ -1,0 +1,10 @@
+{% extends get_admin_template('base_list_field', admin.code) %}
+
+{% block field %}
+    {% if object.profilePicName %}
+        <img src="{{ asset('pickme/profile_pic/' ~ object.profilePicName) }}"
+             style="max-width: 300px; max-height: 90px;"/>
+    {% else %}
+        <span>No image</span>
+    {% endif %}
+{% endblock field %}

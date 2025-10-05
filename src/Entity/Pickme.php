@@ -7,8 +7,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation\Uploadable;
+use Vich\UploaderBundle\Mapping\Annotation\UploadableField;
 
 #[ORM\Entity(repositoryClass: PickmeRepository::class)]
+#[Uploadable]
+
 class Pickme
 {
     #[ORM\Id]
@@ -27,6 +32,14 @@ class Pickme
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
+
+    #[UploadableField(mapping: 'pickme_profile_pic', fileNameProperty: 'profilePicName')]
+    private ?File $profilePicFile = null;
+    #[ORM\Column(type: types::STRING, nullable: true)]
+    private ?string $profilePicName = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private $updatedAt = null;
 
     public function __construct()
     {
@@ -89,5 +102,39 @@ class Pickme
     public function __toString(): string
     {
         return $this->getName();
+    }
+
+    public function getProfilePicFile(): ?File
+    {
+        return $this->profilePicFile;
+    }
+
+    public function setProfilePicFile(?File $profilePicFile): Pickme
+    {
+        $this->profilePicFile = $profilePicFile;
+        $this->updatedAt = new \DateTime();
+        return $this;
+    }
+
+    public function getProfilePicName(): ?string
+    {
+        return $this->profilePicName;
+    }
+
+    public function setProfilePicName(?string $profilePicName): Pickme
+    {
+        $this->profilePicName = $profilePicName;
+        return $this;
+    }
+
+    public function getUpdatedAt(): null
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(null $updatedAt): Pickme
+    {
+        $this->updatedAt = $updatedAt;
+        return $this;
     }
 }
