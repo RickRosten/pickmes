@@ -78,7 +78,7 @@ final class UserAdmin extends AbstractAdmin
         $menu->addChild('Related Pickmes', [
             'route' => 'admin_app_pickme_list',
             'routeParameters' => [
-                'filter[user][value]' => $subject->getId(),
+                'filter[User][value]' => $subject->getId(),
             ],
         ]);
     }

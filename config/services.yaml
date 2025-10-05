@@ -24,6 +24,8 @@ services:
         arguments: [ ~, App\Entity\User, ~ ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'Пользователи', show_in_dashboard: true }
+        calls:
+            - [ addChild, [ '@App\Admin\PickmeAdmin', 'User' ] ]
 
     App\Admin\PickmeAdmin:
         class: App\Admin\PickmeAdmin
